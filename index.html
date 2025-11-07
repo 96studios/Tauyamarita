@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TAU YABARITA | ACCOMMODATION-EAT-CHILL-VIBE</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #1a472a;
+            --secondary-color: #d4af37;
+            --accent-color: #8b4513;
+            --light-color: #f8f9fa;
+            --dark-color: #333;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--dark-color);
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4, h5 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('/assets/images/Env_04.jpg') no-repeat center center;
+            background-size: cover;
+            color: white;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .logo-img {
+            max-width: 300px;
+            height: auto;
+            margin-bottom: 2.5rem;
+            animation: fadeInDown 1.5s ease;
+        }
+        
+        .tagline {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            letter-spacing: 2px;
+            animation: fadeInUp 1.5s ease;
+        }
+        
+        .pricing {
+            background-color: rgba(26, 71, 42, 0.8);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin: 2rem 0;
+            animation: fadeIn 2s ease;
+        }
+        
+        .price-item {
+            margin: 0.5rem 0;
+            font-size: 1.2rem;
+        }
+        
+        .cta-button {
+            background-color: var(--secondary-color);
+            color: var(--dark-color);
+            border: none;
+            padding: 0.8rem 2rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+            border-radius: 50px;
+            margin-top: 1rem;
+            text-decoration: none;
+            display: inline-block;
+            cursor: pointer;
+        }
+        
+        .cta-button:hover {
+            background-color: #b8941f;
+            color: var(--dark-color);
+        }
+        
+        /* Features Section */
+        .features {
+            padding: 5rem 0;
+            background-color: var(--light-color);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--primary-color);
+            position: relative;
+        }
+        
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background-color: var(--secondary-color);
+            margin: 10px auto;
+        }
+        
+        .feature-item {
+            text-align: center;
+            padding: 2rem 1rem;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            margin-bottom: 1.5rem;
+        }
+        
+        .feature-item:hover {
+            transform: translateY(-10px);
+            background-color: white;
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        /* Gallery Section */
+        .gallery {
+            padding: 5rem 0;
+            background-color: white;
+        }
+        
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+            height: 300px;
+        }
+        
+        .gallery-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .gallery-item:hover .gallery-img {
+            transform: scale(1.1);
+        }
+        
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(26, 71, 42, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+        
+        .contact-info {
+            margin-bottom: 2rem;
+        }
+        
+        .contact-item {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .contact-icon {
+            margin-right: 10px;
+            color: var(--secondary-color);
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            margin: 2rem 0;
+        }
+
+        .social-links a {
+            text-decoration: none;
+        }
+        
+        .social-link {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            margin: 0 10px;
+            margin-top: 20px;
+            color: white;
+            transition: all 0.3s ease;
+        }
+        
+        .social-link:hover {
+            background-color: var(--secondary-color);
+            color: var(--dark-color);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            margin-top: 2rem;
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.7);
+        }
+        
+        .map-container {
+            height: 300px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        /* Desktop Map */
+        @media (min-width: 992px) {
+            .map-container {
+                width: 100%;
+            }
+            
+            .footer-call-and-social {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                flex-wrap: wrap;
+            }
+            
+            .footer-call-button {
+                margin-bottom: 0;
+            }
+            
+            .social-links {
+                margin: 0;
+                justify-content: flex-end;
+            }
+        }
+        
+        /* Mobile Footer Button Centering */
+        @media (max-width: 768px) {
+            .footer-call-button {
+                display: flex;
+                justify-content: center;
+            }
+            
+            /* Logo adjustments: mobile and tablet */
+            .logo-img {
+                max-width: 200px;
+                margin-bottom: 1.5rem;
+            }
+        }
+        
+        /* Tablet adjustments */
+        @media (min-width: 768px) and (max-width: 991px) {
+            .logo-img {
+                max-width: 250px;
+            }
+        }
+        
+        /* Animations */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .logo {
+                width: 250px;
+                height: 120px;
+                margin-bottom: 120px;
+            }
+            
+            .logo-text {
+                font-size: 2rem;
+            }
+            
+            .tagline {
+                font-size: 1.2rem;
+            }
+            
+            .pricing {
+                padding: 1rem;
+            }
+            
+            .map-container {
+                height: 250px;
+            }
+        }
+
+        /* Hamburger Section */
+            .hamburger {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .hamburger-line {
+            width: 100%;
+            height: 3px;
+            background-color: white;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .hamburger:hover .hamburger-line {
+            background-color: #ccc;
+        }
+
+        /* Active state */
+        .hamburger.active .hamburger-line:nth-child(1) {
+            transform: translateY(11px) rotate(45deg);
+        }
+
+        .hamburger.active .hamburger-line:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active .hamburger-line:nth-child(3) {
+            transform: translateY(-11px) rotate(-45deg);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header id="home">
+
+        <button class="hamburger" id="hamburgerBtn" aria-label="Toggle menu">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+        </button>
+
+        <div class="container">
+
+            <div class="logo mx-auto">
+               <img src="/assets/images/logo.png" alt="Tau Yabarita" class="logo-img mx-auto d-block">
+            </div>
+            <p hidden class="tagline">ACCOMMODATION • EAT • CHILL • VIBE</p>
+            
+            <div class="pricing">
+                <div class="price-item">R 700 PER NIGHT, Queen Bedroom</div>
+                <div class="price-item">R 800 PER NIGHT, Double Sharing : 2 Separate Beds</div>
+            </div>
+            
+            <button class="cta-button" onclick="scrollToContact()">
+                <i class="fas fa-phone-alt"></i> Call Now
+            </button>
+        </div>
+        
+        <div class="scroll-indicator" style=" margin-top: 20px;">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </header>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <h2 class="section-title">What We Offer</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-bed"></i>
+                        </div>
+                        <h4>Accommodation</h4>
+                        <p>Comfortable and stylish rooms for a perfect stay</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-utensils"></i>
+                        </div>
+                        <h4>Self Catering</h4>
+                        <p>Fully equipped kitchen for your convenience</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-wifi"></i>
+                        </div>
+                        <h4>Secure Wi-Fi</h4>
+                        <p>High-speed internet access throughout the property</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-coffee"></i>
+                        </div>
+                        <h4>Breakfast</h4>
+                        <p>Start your day with a delicious breakfast</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-cocktail"></i>
+                        </div>
+                        <h4>Entertainment Bar</h4>
+                        <p>Relax and unwind at our stylish bar</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-plus-circle"></i>
+                        </div>
+                        <h4>Many More</h4>
+                        <p>Additional amenities for your comfort and enjoyment</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery" id="gallery">
+        <div class="container">
+            <h2 class="section-title">Our Gallery</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="gallery-item">
+                        <img src="/assets/images/Bedroom_16.jpg" alt="Queen Bedroom" class="gallery-img">
+                        <div class="gallery-overlay">
+                            <h4 class="text-white">Queen Bedroom</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="gallery-item">
+                        <img src="/assets/images/Bedroom_04.jpg" alt="Confort & Space" class="gallery-img">
+                        <div class="gallery-overlay">
+                            <h4 class="text-white">Confort & Space</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="gallery-item">
+                        <img src="/assets/images/Bedroom_01.jpg" alt="Queen Bedroom" class="gallery-img">
+                        <div class="gallery-overlay">
+                            <h4 class="text-white">Queen Bedroom</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="gallery-item">
+                        <img src="/assets/images/Bedroom_10.jpg" alt="Double Sharing" class="gallery-img">
+                        <div class="gallery-overlay">
+                            <h4 class="text-white">Double Sharing</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="gallery-item">
+                        <img src="/assets/images/Env_05.jpg" alt="Outside environment" class="gallery-img">
+                        <div class="gallery-overlay">
+                            <h4 class="text-white">Outside environment</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="gallery-item">
+                        <img src="/assets/images/Bedroom_13.jpg" alt="Double Joy" class="gallery-img">
+                        <div class="gallery-overlay">
+                            <h4 class="text-white">Double Joy</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="gallery-item">
+                        <img src="/assets/images/Bathroom_01.jpg" alt="Bathroom" class="gallery-img">
+                        <div class="gallery-overlay">
+                            <h4 class="text-white">Bathroom</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="gallery-item">
+                        <img src="/assets/images/water_01.jpg" alt="Premium Water" class="gallery-img">
+                        <div class="gallery-overlay">
+                            <h4 class="text-white">Premium Water</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="gallery-item">
+                        <img src="/assets/images/Bathroom_02.jpg" alt="Bathroom" class="gallery-img">
+                        <div class="gallery-overlay">
+                            <h4 class="text-white">Bathroom</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <h3 class="mb-4">Contact Us</h3>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-phone-alt contact-icon"></i>
+                            <span>015 110 1216</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope contact-icon"></i>
+                            <span>info@baritagroup.co.za</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-globe contact-icon"></i>
+                            <span>www.baritagroup.co.za</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt contact-icon"></i>
+                            <span>Stand 84 Marobala Village, Ga Dikgale</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <h3 class="mb-4">For Bookings</h3>
+                    <p>Call us now to book your stay and experience the perfect accommodation with great vibes!</p>
+                    
+                    <div class="footer-call-and-social">
+                        <div class="footer-call-button">
+                            <a href="tel:0151101216" class="cta-button mt-3">
+                                <i class="fas fa-phone-alt"></i> Call 015 110 1216
+                            </a>
+                        </div>
+                        
+                        <div class="social-links">
+                            <a  class="social-link">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a class="social-link">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a class="social-link">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a  class="social-link">
+                                <i class="fa-brands fa-linkedin"></i>    
+                            </a>
+                        </div>   
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row mt-4">
+                <div class="col-12">
+                    <div class="map-container">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6143.722306538172!2d29.772913450286055!3d-23.70886774650229!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1ec6c1e62a76ea6d%3A0x99920cd78c6010d4!2sTau%20ya%20Barita!5e0!3m2!1sen!2sza!4v1762502162539!5m2!1sen!2sza" 
+                            width="100%" 
+                            height="100%" 
+                            style="border:0;" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                &copy; 2025 Tau Yabarita. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Scroll to contact section
+        function scrollToContact() {
+            document.getElementById('contact').scrollIntoView({ 
+                behavior: 'smooth' 
+            });
+        }
+        
+        // Scroll to top
+        function scrollToTop() {
+            window.scrollTo({ 
+                top: 0, 
+                behavior: 'smooth' 
+            });
+        }
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            const featureItems = document.querySelectorAll('.feature-item');
+            const galleryItems = document.querySelectorAll('.gallery-item');
+            
+            featureItems.forEach(item => {
+                item.style.opacity = '0';
+                item.style.transform = 'translateY(20px)';
+            });
+            
+            galleryItems.forEach(item => {
+                item.style.opacity = '0';
+                item.style.transform = 'translateY(20px)';
+            });
+            
+            // Animate on scroll
+            window.addEventListener('scroll', function() {
+                const scrollPosition = window.scrollY;
+                const windowHeight = window.innerHeight;
+                
+                // Animate feature items
+                featureItems.forEach(item => {
+                    const itemPosition = item.getBoundingClientRect().top + scrollPosition;
+                    
+                    if (scrollPosition > itemPosition - windowHeight + 100) {
+                        item.style.opacity = '1';
+                        item.style.transform = 'translateY(0)';
+                        item.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                    }
+                });
+                
+                // Animate gallery items
+                galleryItems.forEach(item => {
+                    const itemPosition = item.getBoundingClientRect().top + scrollPosition;
+                    
+                    if (scrollPosition > itemPosition - windowHeight + 100) {
+                        item.style.opacity = '1';
+                        item.style.transform = 'translateY(0)';
+                        item.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                    }
+                });
+            });
+            
+            window.dispatchEvent(new Event('scroll'));
+        });
+    </script>
+</body>
+</html>
